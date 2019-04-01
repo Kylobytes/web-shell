@@ -1,17 +1,21 @@
 <template>
 <div class="panel">
-  <div class="activities">
+  <!-- <div class="left-edge"></div> -->
+  <!-- <div class="content"> -->
+  <div class="activities elem">
     <p>Activities</p>
   </div>
-  <div class="time">
+  <div class="time elem">
     <p>Sun 22:00</p>
   </div>
-  <div class="user-menu">
+  <div class="user-menu elem">
     <i class="fa fa-wifi"></i>
     <i class="fa fa-volume-up"></i>
     <i class="fa fa-power-off"></i>
     <i class="fa fa-caret-down"></i>
   </div>
+  <!-- </div> -->
+<!--  <div class="right-edge"></div>-->
 </div>
 </template>
 
@@ -23,7 +27,8 @@ export default class Panel extends Vue {}
 
 <style scoped lang="scss">
 .panel {
-    background-color: #000000;
+    align-self: flex-start;
+    background-color: black;
     font-weight: 700;
     color: #cccccc;
     height: 27px;
@@ -33,11 +38,58 @@ export default class Panel extends Vue {}
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
-
+    
+    &:before,
+    &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        z-index: -1;
+    }
+    &:before {
+        border: 0 solid transparent;
+        border-top: 27px solid black;
+        border-radius: 100% 0 0 0;
+        top: 0;
+        left: 0;
+        width: 8px;
+        height: 8px;
+    }
+    &:after {
+        border: 0 solid transparent;
+        border-top: 27px solid black;
+        border-radius: 0 100% 0 0;
+        top: 0px;
+        right: 0px;
+        width: 8px;
+        height: 8px;
+    }
+    
+    /* .left-edge { */
+    /*     width: 0; */
+    /*     height: 0; */
+    /*     border-top: 50px solid black; */
+    /*     border-right: 50px solid transparent; */
+    /*     border-top-right-radius: 50%; */
+    /*     z-index: -1; */
+    /* } */
+    
+    /* .right-edge { */
+    /*     width: 0; */
+    /*     height: 0; */
+    /*     border-top: 50px solid black; */
+    /*     border-left: 50px solid transparent; */
+    /*     z-index: -1; */
+    /* } */
+    
+    .elem:hover {
+        color: #ffffff;
+    }
+    
     .activities {
         margin-left: 12px;
     }
-
+    
     .fa {
         margin-right: 12px;
     }
