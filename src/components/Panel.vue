@@ -28,7 +28,7 @@ export default class Panel extends Vue {}
     font-weight: 700;
     color: #CCCCCC;
     height: 27px;
-    min-width: 720px;
+    min-width: 800px;
     width: 100vw;
     display: flex;
     flex-flow: row nowrap;
@@ -55,10 +55,14 @@ export default class Panel extends Vue {}
         border: 0 solid transparent;
         border-top: 27px solid black;
         border-radius: 0 100% 0 0;
-        top: 0px;
-        right: 0px;
+        top: 0;
+        right: 0;
         width: 8px;
         height: 8px;
+
+        @media (max-width: 800px) {
+            left: 792px;
+        }
     }
     
     .elem:hover {
