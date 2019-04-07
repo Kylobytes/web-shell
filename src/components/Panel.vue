@@ -1,6 +1,6 @@
 <template>
 <div class="panel">
-  <div class="activities elem">
+  <div @click="toggleOverlay" class="activities elem">
     <p>Activities</p>
   </div>
   <div class="time elem">
@@ -17,7 +17,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import Component from 'vue-class-component'
+import { Component, Emit } from 'vue-property-decorator'
 
 @Component
 export default class Panel extends Vue {
@@ -54,6 +54,9 @@ export default class Panel extends Vue {
 
         this.time = `${day} ${hourString}:${minuteString}`
     }
+
+    @Emit()
+    private toggleOverlay(): void { return }
 }
 </script>
 

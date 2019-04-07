@@ -1,17 +1,34 @@
 <template>
 <div id="app">
-  <Panel />
+  <Panel @toggle-overlay="toggleOverlay" />
+  <Overlay :overlayActive="overlayActive" />
 </div>
 </template>
 
 <script lang="ts">
+import Vue from 'vue'
+import Component from 'vue-class-component'
+
 import Panel from './components/Panel.vue'
+import Overlay from './components/Overlay.vue'
 
 import 'typeface-cantarell'
 
+@Component({
+    components: { Panel, Overlay }
+})
+export default class App extends Vue {
+    private overlayActive: boolean
 
-export default {
-    components: { Panel },
+    constructor() {
+        super()
+
+        this.overlayActive = false
+    }
+
+    private toggleOverlay() {
+        this.overlayActive = !this.overlayActive
+    }
 }
 </script>
 
