@@ -16,7 +16,7 @@
     "object-literal-sort-keys": false,
     "no-consecutive-blank-lines": false,
     "no-trailing-whitespace": false,
-    "traliing-comma": false,
+    "trailing-comma": false,
     "semicolon": false
   }
 }
