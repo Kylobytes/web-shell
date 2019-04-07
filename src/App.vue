@@ -1,7 +1,9 @@
 <template>
 <div id="app">
-  <Panel @toggle-overlay="toggleOverlay" />
-  <Overlay :overlayActive="overlayActive" />
+  <Panel
+    @toggle-overlay="toggleOverlay"
+    :time="time" />
+  <Overlay :overlayState="overlayActive ? 'active' : 'inactive'" />
 </div>
 </template>
 
@@ -18,17 +20,39 @@ import 'typeface-cantarell'
     components: { Panel, Overlay }
 })
 export default class App extends Vue {
-    private overlayActive: boolean
+    private DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
-    constructor() {
-        super()
-
-        this.overlayActive = false
-    }
+    private time = ''
+    private timeIntervalId = 0
+    private overlayActive = false
 
     private toggleOverlay() {
         this.overlayActive = !this.overlayActive
     }
+
+    private mounted() {
+        this.showTime()
+        this.timeIntervalId = setInterval(this.showTime, 30000)
+    }
+
+    private destroyed() {
+        clearInterval(this.timeIntervalId)
+    }
+
+
+    private showTime() {
+        const now = new Date()
+        const day = this.DAYS[now.getDay()]
+
+        const hour = now.getHours()
+        const minute = now.getMinutes()
+
+        const hourString = hour > 9 ? hour.toString() : `0${hour}`
+        const minuteString = minute > 9 ? minute.toString() : `0${minute}`
+
+        this.time = `${day} ${hourString}:${minuteString}`
+    }
+
 }
 </script>
 

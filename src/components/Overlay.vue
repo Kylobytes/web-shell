@@ -1,5 +1,5 @@
 <template>
-<div class="overlay" :class="[ overlayActive ? 'shown' : 'hidden' ]">
+<div class="overlay" :class="overlayState">
 </div>
 </template>
 
@@ -10,14 +10,7 @@ import { Component, Prop } from 'vue-property-decorator'
 @Component
 export default class Overlay extends Vue {
     @Prop(Boolean)
-    private readonly overlayActive!: boolean
-
-    private fadeinOverlay: string
-    
-    constructor() {
-        super()
-        this.fadeinOverlay = 'active'
-    }
+    private readonly overlayState!: boolean
 }
 </script>
 
@@ -28,10 +21,10 @@ export default class Overlay extends Vue {
     opacity: 0;
     width: 100vw;
 }
-.shown {
+.active {
     animation: overlay-fadein 500ms forwards;
 }
-.hidden {
+.inactive {
     animation: overlay-fadeout 500ms forwards;
 }
 @keyframes overlay-fadein {
