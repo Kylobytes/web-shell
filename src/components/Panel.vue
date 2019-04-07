@@ -4,7 +4,7 @@
     <p>Activities</p>
   </div>
   <div class="time elem">
-    <p>Sun 22:00</p>
+    <p>{{ time }}</p>
   </div>
   <div class="user-menu elem">
     <i class="fa fa-wifi"></i>
@@ -16,9 +16,45 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import Vue from 'vue'
+import Component from 'vue-class-component'
 
-export default class Panel extends Vue {}
+@Component
+export default class Panel extends Vue {
+    private DAYS: string[]
+    private time: string
+    private timeIntervalId: number
+
+    constructor() {
+        super()
+        
+        this.DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+        this.time = ''
+        this.timeIntervalId = 0
+    }
+
+    private mounted() {
+        this.showTime()
+        this.timeIntervalId = setInterval(this.showTime, 30000)
+    }
+
+    private destroyed() {
+        clearInterval(this.timeIntervalId)
+    }
+
+    private showTime() {
+        const now = new Date()
+        const day = this.DAYS[now.getDay()]
+
+        const hour = now.getHours()
+        const minute = now.getMinutes()
+
+        const hourString = hour > 9 ? hour.toString() : `0${hour}`
+        const minuteString = minute > 9 ? minute.toString() : `0${minute}`
+
+        this.time = `${day} ${hourString}:${minuteString}`
+    }
+}
 </script>
 
 <style scoped lang="scss">
@@ -67,6 +103,10 @@ export default class Panel extends Vue {}
     
     .elem:hover {
         color: white;
+
+        &, p {
+            cursor: default;
+        }
     }
     
     .activities {
