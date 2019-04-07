@@ -25,6 +25,8 @@ export default class App extends Vue {
     private time = ''
     private timeIntervalId = 0
     private overlayActive = false
+    private timeInterval = 0
+    private secondsOffset = 0
 
     private toggleOverlay() {
         this.overlayActive = !this.overlayActive
@@ -32,7 +34,12 @@ export default class App extends Vue {
 
     private mounted() {
         this.showTime()
-        this.timeIntervalId = setInterval(this.showTime, 30000)
+        this.timeIntervalId = setInterval(
+            this.showTime,
+            this.timeInterval > 1
+                ? 60000
+                : (60 - this.secondsOffset) * 1000
+        )
     }
 
     private destroyed() {
@@ -44,6 +51,8 @@ export default class App extends Vue {
         const now = new Date()
         const day = this.DAYS[now.getDay()]
 
+        this.secondsOffset = now.getSeconds()
+
         const hour = now.getHours()
         const minute = now.getMinutes()
 
@@ -51,6 +60,7 @@ export default class App extends Vue {
         const minuteString = minute > 9 ? minute.toString() : `0${minute}`
 
         this.time = `${day} ${hourString}:${minuteString}`
+        if (this.timeInterval < 3) ++this.timeInterval
     }
 
 }
