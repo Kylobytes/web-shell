@@ -9,8 +9,8 @@ import { Component, Prop } from 'vue-property-decorator'
 
 @Component
 export default class Overlay extends Vue {
-    @Prop(Boolean)
-    private readonly overlayState!: boolean
+    @Prop(String)
+    private readonly overlayState!: string
 }
 </script>
 

@@ -20,47 +20,33 @@ import 'typeface-cantarell'
     components: { Panel, Overlay }
 })
 export default class App extends Vue {
-    private DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
-
-    private time = ''
-    private timeIntervalId = 0
     private overlayActive = false
-    private timeInterval = 0
-    private secondsOffset = 0
-
+    
+    private DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+    
+    private now = new Date()
+    private day = ''
+    private hourString = ''
+    private minuteString = ''
+    private clock = `${this.day} ${this.hourString}:${this.minuteString}`
+    private clockIntervalId = 0
+    
     private toggleOverlay() {
         this.overlayActive = !this.overlayActive
     }
 
     private mounted() {
-        this.showTime()
-        this.timeIntervalId = setInterval(
-            this.showTime,
-            this.timeInterval > 1
-                ? 60000
-                : (60 - this.secondsOffset) * 1000
-        )
+        this.updateClock()
+        this.clockIntervalId = setInterval(this.updateClock, 30000)
     }
-
+    
     private destroyed() {
-        clearInterval(this.timeIntervalId)
+        // const hours = 
+        clearInterval(this.clockIntervalId)
     }
-
-
-    private showTime() {
-        const now = new Date()
-        const day = this.DAYS[now.getDay()]
-
-        this.secondsOffset = now.getSeconds()
-
-        const hour = now.getHours()
-        const minute = now.getMinutes()
-
-        const hourString = hour > 9 ? hour.toString() : `0${hour}`
-        const minuteString = minute > 9 ? minute.toString() : `0${minute}`
-
-        this.time = `${day} ${hourString}:${minuteString}`
-        if (this.timeInterval < 3) ++this.timeInterval
+    
+    private updateClock() {
+        return
     }
 
 }
