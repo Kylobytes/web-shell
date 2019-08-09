@@ -48,24 +48,21 @@ export default class Panel extends Vue {
         content: '';
         display: block;
         position: absolute;
+        top: 0;
+        width: 8px;
+        height: 8px;
     }
     &:before {
         border: 0 solid transparent;
         border-top: 27px solid black;
         border-radius: 100% 0 0 0;
-        top: 0;
         left: 0;
-        width: 8px;
-        height: 8px;
     }
     &:after {
         border: 0 solid transparent;
         border-top: 27px solid black;
         border-radius: 0 100% 0 0;
-        top: 0;
         right: 0;
-        width: 8px;
-        height: 8px;
 
         @media (max-width: 800px) {
             left: 792px;
