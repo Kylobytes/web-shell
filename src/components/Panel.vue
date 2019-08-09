@@ -48,7 +48,6 @@ export default class Panel extends Vue {
         content: '';
         display: block;
         position: absolute;
-        z-index: -1;
     }
     &:before {
         border: 0 solid transparent;
