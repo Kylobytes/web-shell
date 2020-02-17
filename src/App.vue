@@ -65,6 +65,7 @@ export default class App extends Vue {
     justify-content: space-between;
     min-height: 600px;
     min-width: 800px;
+    position: relative;
     width: 100vw;
     height: 100vh;
 }
