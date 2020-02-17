@@ -55,18 +55,15 @@ export default class App extends Vue {
 <style lang="scss">
 #app {
     background: url('./assets/kylobytes-material.png') grey center;
+    color: #2c3e50;
     font-family: 'Cantarell', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    height: 100vh;
     min-height: 600px;
     min-width: 800px;
     position: relative;
+    text-align: center;
     width: 100vw;
-    height: 100vh;
 }
 </style>
