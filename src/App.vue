@@ -3,6 +3,9 @@
   <Panel
     @toggle-overlay="toggleOverlay"
     :time="time" />
+
+  <Dash :overlayState="overlayActive ? 'active' : 'inactive'" />
+
   <Overlay :overlayState="overlayActive ? 'active' : 'inactive'" />
 </div>
 </template>
@@ -12,12 +15,13 @@ import Vue from 'vue'
 import Component from 'vue-class-component'
 
 import Panel from './components/Panel.vue'
+import Dash from './components/Dash.vue'
 import Overlay from './components/Overlay.vue'
 
 import 'typeface-cantarell'
 
 @Component({
-    components: { Panel, Overlay }
+    components: { Panel, Dash, Overlay }
 })
 export default class App extends Vue {
     private overlayActive = false
