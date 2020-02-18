@@ -84,6 +84,10 @@ export default class Panel extends Vue {
     .fa {
         margin-right: 12px;
     }
+
+    .activities, .time, .elem > .fa {
+        user-select: none;
+    }
 }
 h2 {
     margin: 0;
