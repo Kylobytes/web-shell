@@ -47,16 +47,23 @@ export default class App extends Vue {
     private destroyed() {
         clearInterval(this.clockIntervalId)
     }
-    
+
     private renderClock() {
         const now = new Date()
-        const day = this.DAYS[now.getDay()]
-        const date = `${now.getDate()} ${this.MONTHS[now.getMonth()]}`
-        const hour = now.getHours().toString()
-        const minute = now.getMinutes().toString()
-        this.time = `${day} ${date} ${hour > 9 ? hour : 0 + hour}:${minute > 9 ? minute : 0 + minute}`
-    }
 
+        const day = this.DAYS[now.getDay()]
+        const date = now.getDate()
+        const dateString = date > 9 ? date.toString() : `0${date}`
+        const monthDate = `${date} ${this.MONTHS[now.getMonth()]}`
+
+        const hour = now.getHours()
+        const hourString = hour > 9 ? hour.toString() : `0${hour}`
+
+        const minute = now.getMinutes()
+        const minuteString = minute > 9 ? minute.toString() : `0${minute}`
+
+        this.time = `${day} ${monthDate} ${hourString}:${minuteString}`
+    }
 }
 </script>
 
