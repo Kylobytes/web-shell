@@ -25,14 +25,14 @@ import 'typeface-cantarell'
 })
 export default class App extends Vue {
     private overlayActive = false
+    private time: string = ''
     
     private DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+    private MONTHS = [
+        'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct',
+        'Nov', 'Dec'
+    ]
     
-    private now = new Date()
-    private day = ''
-    private hourString = ''
-    private minuteString = ''
-    private clock = `${this.day} ${this.hourString}:${this.minuteString}`
     private clockIntervalId = 0
     
     private toggleOverlay() {
@@ -40,17 +40,21 @@ export default class App extends Vue {
     }
 
     private mounted() {
-        this.updateClock()
-        this.clockIntervalId = setInterval(this.updateClock, 30000)
+        this.renderClock()
+        this.clockIntervalId = setInterval(this.renderClock, 30000)
     }
     
     private destroyed() {
-        // const hours = 
         clearInterval(this.clockIntervalId)
     }
     
-    private updateClock() {
-        return
+    private renderClock() {
+        const now = new Date()
+        const day = this.DAYS[now.getDay()]
+        const date = `${now.getDate()} ${this.MONTHS[now.getMonth()]}`
+        const hour = now.getHours().toString()
+        const minute = now.getMinutes().toString()
+        this.time = `${day} ${date} ${hour > 9 ? hour : 0 + hour}:${minute > 9 ? minute : 0 + minute}`
     }
 
 }
