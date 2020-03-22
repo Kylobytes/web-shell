@@ -7,10 +7,10 @@
     <p>{{ time }}</p>
   </div>
   <div class="user-menu elem">
-    <i class="fa fa-wifi"></i>
-    <i class="fa fa-volume-up"></i>
-    <i class="fa fa-power-off"></i>
-    <i class="fa fa-caret-down"></i>
+    <WifiIconSymbolic class="panel-icon-symbolic" />
+    <PowerIconSymbolic class="panel-icon-symbolic" />
+    <VolumeIconSymbolic class="panel-icon-symbolic" />
+    <PanDownIconSymbolic class="panel-icon-symbolic" />
   </div>
 </div>
 </template>
@@ -19,7 +19,19 @@
 import Vue from 'vue'
 import { Component, Emit, Prop } from 'vue-property-decorator'
 
-@Component
+import WifiIconSymbolic from '../assets/adwaita-icon-theme/Adwaita/scalable/status/network-wireless-signal-excellent-symbolic.svg'
+import VolumeIconSymbolic from '../assets/adwaita-icon-theme/Adwaita/scalable/status/audio-volume-high-symbolic.svg'
+import PowerIconSymbolic from '../assets/adwaita-icon-theme/Adwaita/scalable/actions/system-shutdown-symbolic.svg'
+import PanDownIconSymbolic from '../assets/adwaita-icon-theme/Adwaita/scalable/ui/pan-down-symbolic.svg'
+
+@Component({
+    components: {
+        WifiIconSymbolic,
+        PowerIconSymbolic,
+        VolumeIconSymbolic,
+        PanDownIconSymbolic
+    }
+})
 export default class Panel extends Vue {
     @Prop(String)
     private time!: string
@@ -68,23 +80,31 @@ export default class Panel extends Vue {
             left: 792px;
         }
     }
-    
+    &-icon {
+        &-symbolic {
+            margin-right: 12px;
+            & * {
+                fill: #CCCCCC;
+            }
+        }
+    }
     .elem:hover {
         color: white;
+
+        &, .panel-icon-symbolic * {
+            fill: white;
+        }
 
         &, p {
             cursor: default;
         }
     }
-    
     .activities {
         margin-left: 12px;
     }
-    
     .fa {
         margin-right: 12px;
     }
-
     .activities, .time, .elem > .fa {
         user-select: none;
     }
