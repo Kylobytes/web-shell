@@ -37,3 +37,7 @@ npm run test:unit
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+## Attribution
+### This project uses _adwaita_ icons from the [GNOME Project](https://www.gnome.org)
