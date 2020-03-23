@@ -2,6 +2,9 @@
 <div class="dash" :class="overlayState">
   <TerminalIcon class="app-icon" viewBox="0 0 128 128" width="auto"
                 height="100%" />
+
+  <FilesIcon class="app-icon" viewBox="0 0 128 128" width="auto"
+                height="100%" />
 </div>
 </template>
 
@@ -10,10 +13,12 @@ import Vue from 'vue'
 import { Component, Prop } from 'vue-property-decorator'
 
 import TerminalIcon from '../assets/terminal.svg'
+import FilesIcon from '../assets/files.svg'
 
 @Component({
     components: {
-        TerminalIcon
+        TerminalIcon,
+        FilesIcon
     }
 })
 export default class Dash extends Vue {
