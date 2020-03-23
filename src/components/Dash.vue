@@ -1,6 +1,7 @@
 <template>
 <div class="dash" :class="overlayState">
-  <TerminalIcon class="app-icon" />
+  <TerminalIcon class="app-icon" viewBox="0 0 128 128" width="auto"
+                height="100%" />
 </div>
 </template>
 
@@ -37,12 +38,10 @@ $dash-width: 48px;
     transform: translateY(-50%);
     width: $dash-width;
     margin: 0;
-    padding: 0;
+    padding: 8px 8px 8px 4px;
 
     .app-icon {
-        transform: scale($dash-width / 4 / $dash-width);
-        transform-origin: top left;
-        margin: 4px;
+        margin: 4px 0;
         padding: 0;
 
         &:hover {
@@ -51,7 +50,7 @@ $dash-width: 48px;
     }
 }
 .inactive {
-    margin-left: -1 * $dash-width;
+    margin-left: -2 * $dash-width;
     animation: 250ms slideout;
 }
 .active {
@@ -60,7 +59,7 @@ $dash-width: 48px;
 }
 @keyframes slidein {
     from {
-        margin-left: -1 * $dash-width;
+        margin-left: -2 * $dash-width;
     }
     to {
         margin-left: 0;
@@ -71,7 +70,7 @@ $dash-width: 48px;
         margin-left: 0;
     }
     to {
-        margin-left: -1 * $dash-width;
+        margin-left: -2 * $dash-width;
     }
 }
 </style>
