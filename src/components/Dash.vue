@@ -2,10 +2,10 @@
 <div class="dash" :class="overlayState">
   <TerminalIcon class="app-icon" viewBox="0 0 128 128" width="auto"
                 height="100%" />
-
   <FilesIcon class="app-icon" viewBox="0 0 128 128" width="auto"
              height="100%" />
-
+  <MusicIcon class="app-icon" viewBox="0 0 128 128" width="auto"
+             height="100%" />
   <AppGridIcon class="app-icon app-grid-icon" viewBox="0 0 16 16" width="100%" height="auto" />
 </div>
 </template>
@@ -16,12 +16,14 @@ import { Component, Prop } from 'vue-property-decorator'
 
 import TerminalIcon from '../assets/terminal.svg'
 import FilesIcon from '../assets/files.svg'
+import MusicIcon from '../assets/music.svg'
 import AppGridIcon from '../assets/adwaita-icon-theme/Adwaita/scalable/actions/view-app-grid-symbolic.svg'
 
 @Component({
     components: {
         TerminalIcon,
         FilesIcon,
+        MusicIcon,
         AppGridIcon
     }
 })
