@@ -3,10 +3,8 @@
   <Panel
     @toggle-overlay="toggleOverlay"
     :time="time" />
-
-  <Dash :overlayState="overlayActive ? 'active' : 'inactive'" />
-
   <Overlay :overlayState="overlayActive ? 'active' : 'inactive'" />
+  <Dash :overlayState="overlayActive ? 'active' : 'inactive'" />
 </div>
 </template>
 
