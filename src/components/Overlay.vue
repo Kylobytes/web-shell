@@ -16,9 +16,9 @@ export default class Overlay extends Vue {
 
 <style scoped lang="scss">
 .overlay {
-    background: radial-gradient(#FFFFFF00, black);
+    background: #000;
     height: calc(100vh - 27px);
-    opacity: 0;
+    opacity: 0.6;
     width: 100vw;
 }
 .active {
@@ -29,12 +29,12 @@ export default class Overlay extends Vue {
 }
 @keyframes overlay-fadein {
     to {
-        opacity: 0.2;
+        opacity: 0.6;
     }
 }
 @keyframes overlay-fadeout {
     from {
-        opacity: 0.2;
+        opacity: 0.6;
     }
     to {
         opacity: 0;
