@@ -7,10 +7,10 @@
     <p>{{ time }}</p>
   </div>
   <div class="user-menu elem">
-    <WifiIconSymbolic class="panel-icon-symbolic" />
-    <PowerIconSymbolic class="panel-icon-symbolic" />
-    <VolumeIconSymbolic class="panel-icon-symbolic" />
-    <PanDownIconSymbolic class="panel-icon-symbolic" />
+    <WifiIcon class="panel-icon-symbolic" />
+    <PowerIcon class="panel-icon-symbolic" />
+    <VolumeIcon class="panel-icon-symbolic" />
+    <PanDownIcon class="panel-icon-symbolic" />
   </div>
 </div>
 </template>
@@ -19,17 +19,17 @@
 import Vue from 'vue'
 import { Component, Emit, Prop } from 'vue-property-decorator'
 
-import WifiIconSymbolic from '../assets/adwaita-icon-theme/Adwaita/scalable/status/network-wireless-signal-excellent-symbolic.svg'
-import VolumeIconSymbolic from '../assets/adwaita-icon-theme/Adwaita/scalable/status/audio-volume-high-symbolic.svg'
-import PowerIconSymbolic from '../assets/adwaita-icon-theme/Adwaita/scalable/actions/system-shutdown-symbolic.svg'
-import PanDownIconSymbolic from '../assets/adwaita-icon-theme/Adwaita/scalable/ui/pan-down-symbolic.svg'
+import WifiIcon from 'adwaita-icon-web/dist/svg/network-wireless-signal-excellent.svg'
+import VolumeIcon from 'adwaita-icon-web/dist/svg/audio-volume-high.svg'
+import PowerIcon from 'adwaita-icon-web/dist/svg/system-shutdown.svg'
+import PanDownIcon from 'adwaita-icon-web/dist/svg/pan-down.svg'
 
 @Component({
     components: {
-        WifiIconSymbolic,
-        PowerIconSymbolic,
-        VolumeIconSymbolic,
-        PanDownIconSymbolic
+        WifiIcon,
+        PowerIcon,
+        VolumeIcon,
+        PanDownIcon
     }
 })
 export default class Panel extends Vue {

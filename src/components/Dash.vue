@@ -20,7 +20,7 @@ import TerminalIcon from '../assets/terminal.svg'
 import FilesIcon from '../assets/files.svg'
 import MusicIcon from '../assets/music.svg'
 import VideosIcon from '../assets/videos.svg'
-import AppGridIcon from '../assets/adwaita-icon-theme/Adwaita/scalable/actions/view-app-grid-symbolic.svg'
+import AppGridIcon from 'adwaita-icon-web/dist/svg/view-app-grid.svg'
 
 @Component({
     components: {
@@ -32,8 +32,8 @@ import AppGridIcon from '../assets/adwaita-icon-theme/Adwaita/scalable/actions/v
     }
 })
 export default class Dash extends Vue {
-@Prop(String)
-private readonly overlayState!: string
+    @Prop(String)
+    private readonly overlayState!: string
 }
 </script>
 
@@ -58,6 +58,7 @@ $dash-width: 48px;
     .app-icon {
         margin: 4px 0;
         padding: 0;
+        color: white;
 
         &:hover {
             cursor: pointer;
