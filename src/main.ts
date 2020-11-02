@@ -4,7 +4,6 @@ import router from './router'
 import store from './store'
 import './registerServiceWorker'
 import 'normalize.css'
-import 'fork-awesome/scss/fork-awesome.scss'
 
 Vue.config.productionTip = false
 
