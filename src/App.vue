@@ -9,14 +9,14 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import Component from 'vue-class-component'
+import Vue from 'vue';
+import Component from 'vue-class-component';
 
-import Panel from './components/Panel.vue'
-import Dash from './components/Dash.vue'
-import Overlay from './components/Overlay.vue'
+import Panel from './components/Panel.vue';
+import Dash from './components/Dash.vue';
+import Overlay from './components/Overlay.vue';
 
-import 'typeface-cantarell'
+import 'typeface-cantarell';
 
 @Component({
     components: { Panel, Dash, Overlay }

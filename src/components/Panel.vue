@@ -16,13 +16,13 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import { Component, Emit, Prop } from 'vue-property-decorator'
+import Vue from 'vue';
+import { Component, Emit, Prop } from 'vue-property-decorator';
 
-import WifiIcon from 'adwaita-icon-web/dist/svg/network-wireless-signal-excellent.svg'
-import VolumeIcon from 'adwaita-icon-web/dist/svg/audio-volume-high.svg'
-import PowerIcon from 'adwaita-icon-web/dist/svg/system-shutdown.svg'
-import PanDownIcon from 'adwaita-icon-web/dist/svg/pan-down.svg'
+import WifiIcon from 'adwaita-icon-web/dist/svg/network-wireless-signal-excellent.svg';
+import VolumeIcon from 'adwaita-icon-web/dist/svg/audio-volume-high.svg';
+import PowerIcon from 'adwaita-icon-web/dist/svg/system-shutdown.svg';
+import PanDownIcon from 'adwaita-icon-web/dist/svg/pan-down.svg';
 
 @Component({
     components: {
