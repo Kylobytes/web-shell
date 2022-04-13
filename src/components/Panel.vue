@@ -1,44 +1,31 @@
 <template>
 <div class="panel">
-  <div @click="toggleOverlay" class="activities elem">
-    <p>Activities</p>
-  </div>
-  <div class="time elem">
-    <p>{{ time }}</p>
-  </div>
-  <div class="user-menu elem">
-    <WifiIcon class="panel-icon-symbolic" />
-    <PowerIcon class="panel-icon-symbolic" />
-    <VolumeIcon class="panel-icon-symbolic" />
-    <PanDownIcon class="panel-icon-symbolic" />
-  </div>
+	<div @click="toggleOverlay" class="activities elem">
+		<p>Activities</p>
+	</div>
+	<div class="time elem">
+		<p>{{ time }}</p>
+	</div>
+	<div class="user-menu elem">
+		<WifiIcon class="panel-icon-symbolic" />
+		<PowerIcon class="panel-icon-symbolic" />
+		<VolumeIcon class="panel-icon-symbolic" />
+		<PanDownIcon class="panel-icon-symbolic" />
+	</div>
 </div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue';
-import { Component, Emit, Prop } from 'vue-property-decorator';
+<script setup lang="ts">
+ import WifiIcon from 'gnomicon/dist/svg/network-wireless-signal-excellent.svg?component';
+ import VolumeIcon from 'gnomicon/dist/svg/audio-volume-high.svg?component';
+ import PowerIcon from 'gnomicon/dist/svg/system-shutdown.svg?component';
+ import PanDownIcon from 'gnomicon/dist/svg/pan-down.svg?component';
 
-import WifiIcon from 'adwaita-icon-web/dist/svg/network-wireless-signal-excellent.svg';
-import VolumeIcon from 'adwaita-icon-web/dist/svg/audio-volume-high.svg';
-import PowerIcon from 'adwaita-icon-web/dist/svg/system-shutdown.svg';
-import PanDownIcon from 'adwaita-icon-web/dist/svg/pan-down.svg';
+ const props = defineProps({
+	 time: String
+ });
 
-@Component({
-    components: {
-        WifiIcon,
-        PowerIcon,
-        VolumeIcon,
-        PanDownIcon
-    }
-})
-export default class Panel extends Vue {
-    @Prop(String)
-    private time!: string
-
-    @Emit()
-    private toggleOverlay(): void { return }
-}
+ function toggleOverlay(): void { return }
 </script>
 
 <style scoped lang="scss">

@@ -3,15 +3,8 @@
 </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import Vue from 'vue';
-import { Component, Prop } from 'vue-property-decorator';
-
-@Component
-export default class Overlay extends Vue {
-    @Prop(String)
-    private readonly overlayState!: string
-}
 </script>
 
 <style scoped lang="scss">

@@ -1,82 +1,72 @@
 <template>
-<div id="app">
-  <Panel
-    @toggle-overlay="toggleOverlay"
-    :time="time" />
-  <Overlay :overlayState="overlayActive ? 'active' : 'inactive'" />
-  <Dash :overlayState="overlayActive ? 'active' : 'inactive'" />
-</div>
+	<div>
+		<Panel
+			@toggle-overlay="toggleOverlay"
+			:time="time" />
+			 <!-- <Overlay :overlayState="overlayActive ? 'active' : 'inactive'" />
+			 <Dash :overlayState="overlayActive ? 'active' : 'inactive'" /> -->
+	</div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue';
-import Component from 'vue-class-component';
+<script setup lang="ts">
+ import { ref, onMounted } from 'vue';
 
-import Panel from './components/Panel.vue';
-import Dash from './components/Dash.vue';
-import Overlay from './components/Overlay.vue';
+ import Panel from './components/Panel.vue';
+ // import Dash from './components/Dash.vue';
+ // import Overlay from './components/Overlay.vue';
 
-import 'typeface-cantarell';
+ const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+ const overlayActive: boolean = ref(false);
+ const time: string = ref('');
+ const clockIntervalId: number = ref(0);
+ 
+ function toggleOverlay(): void {
+     overlayActive.value = !overlayActive.value
+ }
 
-@Component({
-    components: { Panel, Dash, Overlay }
-})
-export default class App extends Vue {
-    private overlayActive = false
-    private time: string = ''
-    
-    private DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
-    private MONTHS = [
-        'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct',
-        'Nov', 'Dec'
-    ]
-    
-    private clockIntervalId = 0
-    
-    private toggleOverlay() {
-        this.overlayActive = !this.overlayActive
-    }
+ onMounted(() => {
+     updateClock()
+     clockIntervalId.value = setInterval(updateClock, 30000)
+ });
+ 
+ function updateClock(): void {
+     const now = new Date();
 
-    private mounted() {
-        this.renderClock()
-        this.clockIntervalId = setInterval(this.renderClock, 30000)
-    }
-    
-    private destroyed() {
-        clearInterval(this.clockIntervalId)
-    }
+     const date = now.getDate()
+     const dateString = date > 9 ? date.toString() : `0${date}`
+     const monthDate = `${date} ${MONTHS[now.getMonth()]}`
 
-    private renderClock() {
-        const now = new Date()
+     const hour = now.getHours()
+     const hourString = hour > 9 ? hour.toString() : `0${hour}`
 
-        const day = this.DAYS[now.getDay()]
-        const date = now.getDate()
-        const dateString = date > 9 ? date.toString() : `0${date}`
-        const monthDate = `${date} ${this.MONTHS[now.getMonth()]}`
+     const minute = now.getMinutes()
+     const minuteString = minute > 9 ? minute.toString() : `0${minute}`
 
-        const hour = now.getHours()
-        const hourString = hour > 9 ? hour.toString() : `0${hour}`
-
-        const minute = now.getMinutes()
-        const minuteString = minute > 9 ? minute.toString() : `0${minute}`
-
-        this.time = `${day} ${monthDate} ${hourString}:${minuteString}`
-    }
-}
+     time.value = `${monthDate} ${hourString}:${minuteString}`
+ }
 </script>
 
 <style lang="scss">
-#app {
-    background: url('./assets/kylobytes-material.png') grey center;
-    color: #2c3e50;
-    font-family: 'Cantarell', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    height: 100vh;
-    min-height: 600px;
-    min-width: 800px;
-    position: relative;
-    text-align: center;
-    width: 100vw;
-}
+ @font-face {
+     font-family: "Cantarell";
+     font-weight: 100 900;
+     font-display: swap;
+     font-style: normal;
+     font-named-instance: "Regular";
+     src: url("node_modules/cantarell/cantarell.woff2") format("woff2");
+ }
+ 
+ #app {
+     background: url('./assets/kylobytes-material.png') grey center;
+     color: #2c3e50;
+     font-family: 'Cantarell', sans-serif;
+     -webkit-font-smoothing: antialiased;
+     -moz-osx-font-smoothing: grayscale;
+     height: 100vh;
+     min-height: 600px;
+     min-width: 800px;
+     position: relative;
+     text-align: center;
+     width: 100vw;
+ }
 </style>

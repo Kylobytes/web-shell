@@ -1,41 +1,23 @@
 {
   "name": "web-shell",
-  "version": "0.1.0",
   "private": false,
+  "version": "1.0.0-prealpha",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
-    "test:e2e": "vue-cli-service test:e2e",
-    "test:unit": "vue-cli-service test:unit"
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "adwaita-icon-web": "^2.0.6",
+    "cantarell": "^0.303.0",
+    "gnomicon": "^1.0.0",
     "normalize.css": "^8.0.1",
-    "register-service-worker": "^1.7.1",
-    "typeface-cantarell": "1.1.13",
-    "vue": "^2.6.11",
-    "vue-class-component": "^7.2.3",
-    "vue-property-decorator": "^9.0.2",
-    "vue-router": "^3.4.8",
-    "vuex": "^3.1.3"
+    "vue": "^3.2.25"
   },
   "devDependencies": {
-    "@types/chai": "^4.2.11",
-    "@types/mocha": "^8.0.3",
-    "@vue/cli": "^4.5.13",
-    "@vue/cli-plugin-babel": "^4.2.3",
-    "@vue/cli-plugin-e2e-nightwatch": "^4.2.3",
-    "@vue/cli-plugin-pwa": "^4.2.3",
-    "@vue/cli-plugin-typescript": "^4.2.3",
-    "@vue/cli-plugin-unit-mocha": "^4.2.3",
-    "@vue/cli-service": "^4.5.13",
-    "@vue/test-utils": "1.2.0",
-    "chai": "^4.1.2",
-    "sass": "^1.28.0",
-    "sass-loader": "^10.2.0",
-    "typescript": "^4.0.5",
-    "vue-svg-loader": "^0.16.0",
-    "vue-template-compiler": "^2.6.11"
+    "@vitejs/plugin-vue": "^2.3.0",
+    "typescript": "^4.5.4",
+    "vite": "^2.9.0",
+    "vite-svg-loader": "^3.2.0",
+    "vue-tsc": "^0.29.8"
   }
 }

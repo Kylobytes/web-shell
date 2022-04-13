@@ -12,7 +12,7 @@
 </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import Vue from 'vue';
 import { Component, Prop } from 'vue-property-decorator';
 
@@ -20,7 +20,8 @@ import TerminalIcon from '../assets/terminal.svg';
 import FilesIcon from '../assets/files.svg';
 import MusicIcon from '../assets/music.svg';
 import VideosIcon from '../assets/videos.svg';
-import AppGridIcon from 'adwaita-icon-web/dist/svg/view-app-grid.svg';
+import AppGridIcon from 'gnomicon/dist/svg/view-app-grid.svg';
+
 
 @Component({
     components: {
