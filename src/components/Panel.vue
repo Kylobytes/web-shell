@@ -12,7 +12,7 @@
 		    <p>{{ time }}</p>
 	    </span>
 	    <span class="panel__status panel__element">
-		    <WifiIcon class="panel__icon--symbolic" />
+		    <NetworkWiredIcon class="panel__icon--symbolic" />
 		    <VolumeIcon class="panel__icon--symbolic" />
 		    <PowerIcon class="panel__icon--symbolic" />
 	    </span>
@@ -22,8 +22,8 @@
 <script setup lang="ts">
  import { onMounted } from 'vue';
  import { storeToRefs } from 'pinia';
- import { usePanelStore } from '@/stores/panel'; 
- import WifiIcon from 'gnomicon/dist/svg/network-wireless-signal-excellent.svg?component';
+ import { usePanelStore } from '@/stores/panel';
+ import NetworkWiredIcon from 'gnomicon/dist/svg/network-wired.svg?component';
  import VolumeIcon from 'gnomicon/dist/svg/audio-volume-high.svg?component';
  import PowerIcon from 'gnomicon/dist/svg/system-shutdown.svg?component';
  import PanDownIcon from 'gnomicon/dist/svg/pan-down.svg?component';
@@ -35,25 +35,26 @@
  function toggleOverlay(): void { return; }
 
  onMounted(() => {
-     store.updateTime();
-     setInterval(() => store.updateTime(), 6000);
+     updateTime();
+     setInterval(() => updateTime(), 6000);
  });
 </script>
 
 <style scoped lang="scss">
  .panel {
-     align-self: flex-start;
      background-color: black;
      font-weight: 700;
      color: #eee;
      width: 100%;
+     padding: 2px 0;
+     user-select: none;
+
      display: flex;
      flex-flow: row nowrap;
      justify-content: space-between;
      align-items: center;
-     user-select: none;
-     padding: 2px 0;
-     
+     align-self: flex-start;
+
      &__start {
          display: flex;
          flex-flow: row nowrap;
@@ -76,8 +77,12 @@
          column-gap: 12px;
      }
 
-     &__icon--symbolic * {
-         fill: #CCCCCC;
+     &__icon--symbolic {
+         transform: scale(1.1);
+
+         & * {
+             fill: #fff;
+         }
      }
  }
 

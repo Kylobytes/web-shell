@@ -1,7 +1,7 @@
-import { defineStore, ref } from 'pinia';
+import { defineStore } from 'pinia';
 import { ref } from 'vue';
 
-export const usePanelStore = defineStore('main', () => {
+export const usePanelStore = defineStore('panel', () => {
     const time = ref('');
 
     function updateTime() {

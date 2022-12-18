@@ -1,8 +1,22 @@
- *, *:before, *:after {
-     box-sizing: border-box;
-     margin: 0;
-     padding: 0;
- }
+@font-face {
+    font-family: "Cantarell";
+    font-weight: 100 900;
+    font-display: swap;
+    font-style: normal;
+    font-named-instance: "Regular";
+    src: url("node_modules/cantarell/cantarell.woff2") format("woff2");
+}
+
+*, *:before, *:after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    font-family: "Cantarell", "Helvetica", sans-serif;
+    font-size: 16px;
+}
 
 body, html {
     height: 100%;

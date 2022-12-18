@@ -1,6 +1,7 @@
 <template>
 	<div>
 		<Panel />
+        <StatusMenu class="app__status-menu" />
 		<!-- <Overlay :overlayState="overlayActive ? 'active' : 'inactive'" />
 			 <Dash :overlayState="overlayActive ? 'active' : 'inactive'" /> -->
 	</div>
@@ -10,6 +11,7 @@
  import { ref, onMounted } from 'vue';
 
  import Panel from './components/Panel.vue';
+ import StatusMenu from './components/StatusMenu.vue';
  // import Dash from './components/Dash.vue';
  // import Overlay from './components/Overlay.vue';
 
@@ -21,14 +23,6 @@
 </script>
 
 <style lang="scss">
- @font-face {
-     font-family: "Cantarell";
-     font-weight: 100 900;
-     font-display: swap;
-     font-style: normal;
-     font-named-instance: "Regular";
-     src: url("node_modules/cantarell/cantarell.woff2") format("woff2");
- }
  
  #app {
      background: url('./assets/kylobytes-material.png') grey center;
@@ -41,5 +35,13 @@
      min-width: 800px;
      position: relative;
      width: 100%;
+ }
+
+ .app {
+     &__status-menu {
+         position: absolute;
+         right: 0px;
+         top: 32px;
+     }
  }
 </style>
